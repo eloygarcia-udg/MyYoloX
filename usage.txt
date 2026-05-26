@@ -5,6 +5,8 @@
 ## https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
 
 ## clone yolox
+git clone git@github.com:eloygarcia-udg/MyYoloX.git
+cd MyYoloX
 
 ## Build yolox image
 docker built -t yolox:latest .
