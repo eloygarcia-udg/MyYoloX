@@ -1,8 +1,8 @@
 ## Install docker
 
-
 ## Install nvidia docker container tool kitç
 ## https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+
 
 ## clone yolox
 git clone git@github.com:eloygarcia-udg/MyYoloX.git
@@ -14,14 +14,23 @@ docker built -t yolox:latest .
 ## Run image
 docker run --gpus all -v <path_to_dataset>:/home/data -v <path_to_code>/YOLOX/:/home/code -ti yolox:latest
 
+
+
+## Preprocessing project: Tranform dicom to png
+
+
+
 ## Note that Yolo is not copied, but it is mounted as a volume, to easly modificate the code if necessary. 
 ## This can be modified after testing YoloX works
 ## First time runing this image, YoloX must be installed
+
 cd home/code/
 pip install -v -e .
 
+
 ## exec yolox nano version for breast roi detection
-python3 tools/demo.py image -f exps/default/yolox_nano.py -c /home/code/archive/yolox_nano_416_roi_torch.pth --path /home/data/VinDr_temporal/ --conf 0.25 --nms 0.45 --tsize 416 --save_result --device gpu
+python3 tools/demo.py image -f exps/default/yolox_nano.py -c /home/code/archive/yolox_nano_416_roi_torch.pth --path <path_to_data_png> --conf 0.25 --nms 0.45 --tsize 416 --save_result --device gpu
+
 
 ## Output:
 # /YOLOX_outputs/yolox_nano/vis_res/{date_of_today}

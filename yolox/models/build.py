@@ -29,7 +29,7 @@ _CKPT_FULL_PATH = {
 }
 
 
-def create_yolox_model(name: str, pretrained: bool = True, num_classes: int = 80, device=None,
+def create_yolox_model(name: str, pretrained: bool = True, num_classes: int = 1, device=None,
                        exp_path: str = None, ckpt_path: str = None) -> nn.Module:
     """creates and loads a YOLOX model
 
@@ -38,7 +38,7 @@ def create_yolox_model(name: str, pretrained: bool = True, num_classes: int = 80
         if you want to load your own model.
         pretrained (bool): load pretrained weights into the model. Default to True.
         device (str): default device to for model. Default to None.
-        num_classes (int): number of model classes. Default to 80.
+        num_classes (int): number of model classes. Default to 1.
         exp_path (str): path to your own experiment file. Required if name="yolox_custom"
         ckpt_path (str): path to your own ckpt. Required if name="yolox_custom" and you want to
             load a pretrained model
@@ -59,7 +59,7 @@ def create_yolox_model(name: str, pretrained: bool = True, num_classes: int = 80
         exp: Exp = get_exp(exp_name=name)
         exp.num_classes = num_classes
         yolox_model = exp.get_model()
-        if pretrained and num_classes == 80:
+        if pretrained and num_classes == 1:
             weights_url = _CKPT_FULL_PATH[name]
             ckpt = load_state_dict_from_url(weights_url, map_location="cpu")
             if "model" in ckpt:
@@ -79,31 +79,31 @@ def create_yolox_model(name: str, pretrained: bool = True, num_classes: int = 80
     return yolox_model
 
 
-def yolox_nano(pretrained: bool = True, num_classes: int = 80, device: str = None) -> nn.Module:
+def yolox_nano(pretrained: bool = True, num_classes: int = 1, device: str = None) -> nn.Module:
     return create_yolox_model("yolox-nano", pretrained, num_classes, device)
 
 
-def yolox_tiny(pretrained: bool = True, num_classes: int = 80, device: str = None) -> nn.Module:
+def yolox_tiny(pretrained: bool = True, num_classes: int = 1, device: str = None) -> nn.Module:
     return create_yolox_model("yolox-tiny", pretrained, num_classes, device)
 
 
-def yolox_s(pretrained: bool = True, num_classes: int = 80, device: str = None) -> nn.Module:
+def yolox_s(pretrained: bool = True, num_classes: int = 1, device: str = None) -> nn.Module:
     return create_yolox_model("yolox-s", pretrained, num_classes, device)
 
 
-def yolox_m(pretrained: bool = True, num_classes: int = 80, device: str = None) -> nn.Module:
+def yolox_m(pretrained: bool = True, num_classes: int = 1, device: str = None) -> nn.Module:
     return create_yolox_model("yolox-m", pretrained, num_classes, device)
 
 
-def yolox_l(pretrained: bool = True, num_classes: int = 80, device: str = None) -> nn.Module:
+def yolox_l(pretrained: bool = True, num_classes: int = 1, device: str = None) -> nn.Module:
     return create_yolox_model("yolox-l", pretrained, num_classes, device)
 
 
-def yolox_x(pretrained: bool = True, num_classes: int = 80, device: str = None) -> nn.Module:
+def yolox_x(pretrained: bool = True, num_classes: int = 1, device: str = None) -> nn.Module:
     return create_yolox_model("yolox-x", pretrained, num_classes, device)
 
 
-def yolov3(pretrained: bool = True, num_classes: int = 80, device: str = None) -> nn.Module:
+def yolov3(pretrained: bool = True, num_classes: int = 1, device: str = None) -> nn.Module:
     return create_yolox_model("yolov3", pretrained, num_classes, device)
 
 
